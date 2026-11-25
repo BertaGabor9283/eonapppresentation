@@ -13,6 +13,5 @@ Az app: https://szbaliint.github.io/eon-szerelo-app/
 | ← → / Szóköz | Lapozás |
 | N | Beszédjegyzet (ki beszél, mit mond) |
 | F | Teljes képernyő |
-| E | Szerkesztő mód (a szöveg a böngészőben mentődik) |
 
 Egyetlen önálló HTML-fájl, build nélkül. Minden cím, név és munkalapszám fiktív.

@@ -15,7 +15,7 @@
    IDEA: az app saját világa – a gradiens fejléc és a szürke „ground”, rajta fehér kártyák
    PICTURE: CSS-ből rajzolt telefonképernyők és nagy, élő idővonal
    COLOUR and TYPE: E.ON piros #ea1b0a → bordó → lila gradiens, #f2f2f7 háttér, türkiz állapotjelzés; Hanken Grotesk
-   LAYOUT: függőleges, snapelő diák; minden dián előadó-címke, N = beszédjegyzet, E = szerkesztés */
+   LAYOUT: függőleges, snapelő diák; N = beszédjegyzet, F = teljes képernyő */
 
 /* ===========================================
    CSS CUSTOM PROPERTIES (THEME)
@@ -371,20 +371,6 @@ h1 b, h2 b { font-weight: 700; }
 .notes.on { transform: translate(-50%, 0); }
 .notes b { display: block; font-size: .8em; opacity: .7; margin-bottom: .3em; font-weight: 700; }
 
-/* ===========================================
-   INLINE EDITING (E billentyű vagy bal felső sarok)
-   =========================================== */
-.edit-hotzone { position: fixed; top: 0; left: 0; width: 80px; height: 80px; z-index: 10000; cursor: pointer; }
-.edit-bar { position: fixed; top: 14px; left: 14px; z-index: 10001; display: flex; gap: 6px; opacity: 0; pointer-events: none; transition: opacity .3s; }
-.edit-bar.show, .edit-bar.active { opacity: 1; pointer-events: auto; }
-.edit-bar button { font: 600 13px/1 var(--font); border: 0; border-radius: 99px; padding: 10px 14px; min-height: 40px; cursor: pointer; background: #1c1c1e; color: #fff; box-shadow: 0 6px 20px rgba(0, 0, 0, .25); }
-.edit-bar button.primary { background: var(--red); }
-.edit-bar .extra { display: none; }
-.edit-bar.active .extra { display: inline-block; }
-body.editing [contenteditable="true"] { outline: 1.5px dashed rgba(30, 162, 177, .8); outline-offset: 3px; border-radius: 4px; cursor: text; }
-body.editing [contenteditable="true"]:focus { outline-style: solid; }
-.toast { position: fixed; top: 64px; left: 14px; background: #1c1c1e; color: #fff; font-size: 13px; padding: 8px 12px; border-radius: 10px; z-index: 10002; opacity: 0; transition: opacity .3s; pointer-events: none; }
-.toast.on { opacity: 1; }
 
 
 /* ===========================================
@@ -532,17 +518,9 @@ body.editing [contenteditable="true"]:focus { outline-style: solid; }
 
 <div class="progress" id="progress"></div>
 <nav class="nav-dots" id="dots" aria-label="Diák"></nav>
-<div class="keyboard-hint" id="hint">← → vagy Szóköz: lapozás · N: jegyzet · F: teljes képernyő · E: szerkesztés</div>
+<div class="keyboard-hint" id="hint">← → vagy Szóköz: lapozás · N: jegyzet · F: teljes képernyő</div>
 <aside class="notes" id="notes" aria-live="polite"></aside>
 
-<!-- Inline szerkesztés vezérlői -->
-<div class="edit-hotzone" id="hotzone" title="Szerkesztés (E)"></div>
-<div class="edit-bar" id="editBar">
-  <button class="primary" id="editToggle">Szerkesztés</button>
-  <button class="extra" id="editCopy">HTML másolása</button>
-  <button class="extra" id="editReset">Eredeti visszaállítása</button>
-</div>
-<div class="toast" id="toast"></div>
 
 <main id="deck">
 
@@ -984,7 +962,6 @@ class SlidePresentation {
 
   setupKeyboard() {
     document.addEventListener('keydown', e => {
-      if (document.body.classList.contains('editing') && e.target.isContentEditable) return;
       const k = e.key;
       if (['ArrowDown', 'ArrowRight', 'PageDown', ' '].includes(k)) { e.preventDefault(); this.go(this.current + 1); }
       else if (['ArrowUp', 'ArrowLeft', 'PageUp'].includes(k)) { e.preventDefault(); this.go(this.current - 1); }
@@ -1039,82 +1016,6 @@ class SlidePresentation {
   }
 }
 
-/* ===========================================
-   INLINE EDITOR
-   E vagy a bal felső sarok: szerkesztő mód. Ctrl/Cmd+S: mentés ebbe a böngészőbe.
-   A „HTML másolása” a teljes, szerkesztett fájlt a vágólapra teszi.
-   =========================================== */
-class InlineEditor {
-  constructor() {
-    this.key = 'eon-deck-edits-v3';
-    this.isActive = false;
-    this.bar = document.getElementById('editBar');
-    this.btn = document.getElementById('editToggle');
-    this.targets = () => document.querySelectorAll('#deck h1, #deck h2, #deck p, #deck li, #deck .ctx b, #deck .ctx span:not(.sq), #deck .dec b, #deck .dec span, #deck .dec .n, #deck .qa div, #deck .team span, #deck .step b, #deck .step span, #deck .qr b, #deck .qr span, #deck .pill');
-    this.original = document.getElementById('deck').innerHTML;
-    this.restore();
-    this.bind();
-  }
-  bind() {
-    const hz = document.getElementById('hotzone');
-    let hide = null;
-    const show = () => { clearTimeout(hide); this.bar.classList.add('show'); };
-    const later = () => { hide = setTimeout(() => { if (!this.isActive) this.bar.classList.remove('show'); }, 400); };
-    hz.addEventListener('mouseenter', show); hz.addEventListener('mouseleave', later);
-    this.bar.addEventListener('mouseenter', show); this.bar.addEventListener('mouseleave', later);
-    hz.addEventListener('click', () => this.toggle());
-    this.btn.addEventListener('click', () => this.toggle());
-    document.getElementById('editCopy').addEventListener('click', () => this.copy());
-    document.getElementById('editReset').addEventListener('click', () => this.reset());
-    document.addEventListener('keydown', e => {
-      if ((e.key === 'e' || e.key === 'E') && !e.target.isContentEditable && !e.metaKey && !e.ctrlKey) this.toggle();
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 's') { e.preventDefault(); this.save(true); }
-      if (e.key === 'Escape' && this.isActive) this.toggle();
-    });
-    document.getElementById('deck').addEventListener('input', () => { clearTimeout(this.t); this.t = setTimeout(() => this.save(false), 600); });
-  }
-  toggle() {
-    this.isActive = !this.isActive;
-    document.body.classList.toggle('editing', this.isActive);
-    this.bar.classList.toggle('active', this.isActive);
-    this.btn.textContent = this.isActive ? 'Kész' : 'Szerkesztés';
-    this.targets().forEach(el => { if (this.isActive) el.setAttribute('contenteditable', 'true'); else el.removeAttribute('contenteditable'); });
-    if (!this.isActive) { this.save(false); this.bar.classList.remove('show'); }
-  }
-  snapshot() {
-    return [...this.targets()].map(el => el.innerHTML);
-  }
-  save(loud) {
-    try { localStorage.setItem(this.key, JSON.stringify(this.snapshot())); if (loud) this.toast('Mentve ebbe a böngészőbe'); }
-    catch (err) { if (loud) this.toast('A mentés itt nem érhető el – használd a HTML másolását'); }
-  }
-  restore() {
-    try {
-      const saved = JSON.parse(localStorage.getItem(this.key) || 'null');
-      const els = [...this.targets()];
-      if (Array.isArray(saved) && saved.length === els.length) els.forEach((el, i) => { el.innerHTML = saved[i]; });
-    } catch (err) {}
-  }
-  reset() {
-    try { localStorage.removeItem(this.key); } catch (err) {}
-    document.getElementById('deck').innerHTML = this.original;
-    location.reload();
-  }
-  async copy() {
-    const clone = document.documentElement.cloneNode(true);
-    clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
-    clone.querySelector('body').classList.remove('editing');
-    clone.querySelectorAll('.slide').forEach(s => s.classList.remove('visible'));
-    try { await navigator.clipboard.writeText('<!DOCTYPE html>\n' + clone.outerHTML); this.toast('A teljes HTML a vágólapon'); }
-    catch (err) { this.toast('A vágólap itt nem érhető el'); }
-  }
-  toast(msg) {
-    const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('on');
-    clearTimeout(this.tt); this.tt = setTimeout(() => t.classList.remove('on'), 2200);
-  }
-}
-
-const editor = new InlineEditor();
 const deck = new SlidePresentation();
 }
 </script>
