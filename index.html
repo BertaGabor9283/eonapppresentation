@@ -632,7 +632,7 @@ body.editing [contenteditable="true"]:focus { outline-style: solid; }
     <div class="flow" style="margin-top:clamp(.4rem,1.6vh,1rem)">
       <div class="step first"><span class="dot"><svg><use href="#i-warn"/></svg></span><b>Hibát találtam</b><span>Egy gomb a kezdőképernyőn</span></div>
       <div class="step"><span class="dot"><svg><use href="#i-cam"/></svg></span><b>Fotó</b><span>Legfeljebb 3 kép</span></div>
-      <div class="step"><span class="dot"><svg><use href="#i-gas"/></svg></span><b>Azonosítás</b><span>Javaslat a fotóból + csempék</span></div>
+      <div class="step"><span class="dot"><svg><use href="#i-gas"/></svg></span><b>Azonosítás</b><span>Javaslat a fotóból</span></div>
       <div class="step"><span class="dot"><svg><use href="#i-clock"/></svg></span><b>Súlyosság</b><span>2–3 igen/nem kérdés</span></div>
       <div class="step"><span class="dot"><svg><use href="#i-send"/></svg></span><b>Ellenőrzés és küldés</b><span>Cím a munkalapról, diktálás</span></div>
       <div class="step last"><span class="dot"><svg><use href="#i-check"/></svg></span><b>Élő státusz</b><span>Ki látta, ki jön</span></div>
@@ -935,7 +935,7 @@ body.editing [contenteditable="true"]:focus { outline-style: solid; }
         <div class="reveal d2"><h3>Felismerés</h3><p>Fotó → javaslat a hibatípusra. 2–3 igen/nem kérdés → az app számolja a súlyosságot, kritikusnál azonnali teendővel.</p></div>
         <div class="reveal d3"><h3>Kommunikáció</h3><p>Automatikus címzett, egyértelmű esetkártya (mi, hol, mennyire, mit tegyél), élő státusz és offline küldési sor.</p></div>
       </div>
-      <div class="team reveal d4"><span>Berta Gábor · projektvezető</span><span>Déri Alexandra · UX research</span><span>Roni · UX research</span><span>Nemes Csongor · UX design</span><span>Dorci · UI design</span><span>Bálint · prototípus, tesztelés</span></div>
+      <div class="team reveal d4"><span>Berta Gábor</span><span>Tisza Veronika</span><span>Déri Alexandra</span><span>Nemes Péter Csongor</span><span>Szaller Bálint</span></div>
       <p class="reveal d5" style="font-size:var(--h2);font-weight:300;letter-spacing:-.03em;margin-top:clamp(.5rem,2vh,1.4rem);line-height:1">Köszönjük! <b style="font-weight:700">Kérdések?</b></p>
     </div>
   </div>
@@ -1048,7 +1048,7 @@ class SlidePresentation {
    =========================================== */
 class InlineEditor {
   constructor() {
-    this.key = 'eon-deck-edits-v2';
+    this.key = 'eon-deck-edits-v3';
     this.isActive = false;
     this.bar = document.getElementById('editBar');
     this.btn = document.getElementById('editToggle');
