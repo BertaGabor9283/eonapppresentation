@@ -846,7 +846,7 @@ body.editing [contenteditable="true"]:focus { outline-style: solid; }
 <!-- ============================================================
      12. dia · Bálint · Prototípus és rendszerarchitektúra
      ============================================================ -->
-<section class="slide light" data-who="Bálint · Prototípus és rendszerarchitektúra" data-notes="A prototípus egyetlen önálló HTML-fájl, build nélkül. Claude artifactként közös, élő adatbázist kap, így a két telefon valós időben szinkronizál, és elérhető a képfelismerés és a diktálás is. GitHub Pages-en egy eszközön fut: helyi sor, kézi típusválasztás, a billentyűzet mikrofonjával lehet diktálni. Ha nincs kapcsolat, a bejelentés helyben sorba áll, és az app 15 másodpercenként újrapróbálja a küldést.">
+<section class="slide light" data-who="Bálint · Prototípus és rendszerarchitektúra" data-notes="A prototípus egyetlen önálló HTML-fájl, build nélkül. A két telefon egy közös, élő adatbázison keresztül valós időben szinkronizál, és elérhető a képfelismerés és a diktálás is. Ha nincs kapcsolat, a bejelentés helyben sorba áll, és az app 15 másodpercenként újrapróbálja a küldést.">
   <div class="slide-content">
     <h2 class="reveal">Egy HTML-fájl, <b>élő közös adatbázis</b></h2>
     <div class="arch reveal d1">
@@ -857,9 +857,7 @@ body.editing [contenteditable="true"]:focus { outline-style: solid; }
       <div class="node"><span class="sq tq"><svg><use href="#i-list"/></svg></span><b>Kolléga telefonja</b><small>Élő lista, esetkártya</small></div>
     </div>
     <div class="modes">
-      <div class="reveal d2"><svg><use href="#i-queue"/></svg><span><b>Offline sor</b>Kapcsolat nélkül helyben menti a bejelentést, és 15 másodpercenként újrapróbálja a küldést.</span></div>
-      <div class="reveal d3"><svg><use href="#i-check"/></svg><span><b>Claude artifact</b>Közös adatbázis, képfelismerés és diktálás – ezen fut a két telefonos demó.</span></div>
-      <div class="reveal d4"><svg><use href="#i-pin"/></svg><span><b>GitHub Pages</b>Egy eszközön: helyi sor, kézi típusválasztás, billentyűzet-mikrofon.</span></div>
+      <div class="reveal d2" style="grid-column:1/-1;max-width:60ch"><svg><use href="#i-queue"/></svg><span><b>Offline sor</b>Kapcsolat nélkül helyben menti a bejelentést, és 15 másodpercenként újrapróbálja a küldést.</span></div>
     </div>
   </div>
   <span class="pg">12</span>
