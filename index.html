@@ -761,23 +761,23 @@ h1 b, h2 b { font-weight: 700; }
     <div class="vis">
       <div class="reveal d2"><h3>Színek, jelentéssel</h3>
         <ul class="sw">
-          <li><i style="background:var(--eon)"></i><span><b>E.ON gradiens</b>Fejléc, márka</span></li>
-          <li><i style="background:#ea1b0a"></i><span><b>Piros #ea1b0a</b>Fő gomb, kritikus</span></li>
+          <li><i style="background:var(--eon)"></i><span><b>E.ON színátmenet</b>Fejléc, márka</span></li>
+          <li><i style="background:#ea1b0a"></i><span><b>E.ON piros</b>Fő gomb, kritikus</span></li>
           <li><i style="background:#ffb020"></i><span><b>Borostyán</b>Sürgős</span></li>
           <li><i style="background:#1ea2b1"></i><span><b>Türkiz</b>Állapot, idővonal</span></li>
           <li><i style="background:#f2f2f7;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)"></i><span><b>Világos háttér</b>Fehér kártyák rajta</span></li>
         </ul></div>
-      <div class="reveal d3"><h3>Tipográfia</h3>
-        <p class="typo"><span style="font-size:clamp(1.4rem,2.6vw,2.4rem);font-weight:700;letter-spacing:-.02em;line-height:1">Mit találtál?</span><small>Nagy cím · 34 px, félkövér</small></p>
-        <p class="typo"><span style="font-size:clamp(.9rem,1.3vw,1.1rem)">Gázvezeték sérülés · Repedés</span><small>Szöveg · 17 px, a telefon rendszer-betűje</small></p>
-        <p class="typo"><span class="sev K" style="font-size:clamp(.7rem,1vw,.85rem);align-self:flex-start"><svg><use href="#i-warn"/></svg>KRITIKUS</span><small>Jelvény · szín + ikon + szó</small></p></div>
-      <div class="reveal d4"><h3>Komponensek</h3>
+      <div class="reveal d3"><h3>Betűk</h3>
+        <p class="typo"><span style="font-size:clamp(1.4rem,2.6vw,2.4rem);font-weight:700;letter-spacing:-.02em;line-height:1">Mit találtál?</span><small>Nagy, erős címek</small></p>
+        <p class="typo"><span style="font-size:clamp(.9rem,1.3vw,1.1rem)">Gázvezeték sérülés · Repedés</span><small>Nyugodt, jól olvasható szöveg</small></p>
+        <p class="typo"><span class="sev K" style="font-size:clamp(.7rem,1vw,.85rem);align-self:flex-start"><svg><use href="#i-warn"/></svg>KRITIKUS</span><small>A súlyosság színnel, ikonnal és szóval</small></p></div>
+      <div class="reveal d4"><h3>Ismerős elemek</h3>
         <ul class="comp">
-          <li>Csoportosított listák és nagy cím</li>
+          <li>Áttekinthető, csoportosított listák</li>
           <li>Rögzített gomb alul, a hüvelykujj alatt</li>
-          <li>Igen/nem szegmentált kapcsoló</li>
+          <li>Egyszerű igen/nem gombok</li>
           <li>Nagy kategóriacsempék</li>
-          <li>Alsó lap a demóbeállításokhoz</li>
+          <li>Beállítások egy felcsúszó lapon</li>
         </ul></div>
     </div>
   </div>
@@ -787,16 +787,16 @@ h1 b, h2 b { font-weight: 700; }
 <!-- ============================================================
      10. dia · Dorci · UI Designer
      ============================================================ -->
-<section class="slide light" data-who="Dorci · UI Designer" data-notes="Hogyan lesz mindez kint is használható? Minden döntés Péter pain pointjaiból jön: nagy célfelületek kesztyűhöz, napfényben olvasható kontraszt, az elsődleges gomb a hüvelykujj alatt. A súlyosság sosem csak szín. Natív iOS-mintákat használtunk, hogy ne kelljen tanulni.">
+<section class="slide light" data-who="Dorci · UI Designer" data-notes="Hogyan lesz mindez kint is használható? Minden döntés Péter pain pointjaiból jön: nagy gombok kesztyűhöz, napfényben is jól olvasható felület, az elsődleges gomb a hüvelykujj alatt. A súlyosság sosem csak szín. Megszokott telefonos elemeket használtunk, hogy ne kelljen tanulni.">
   <div class="slide-content">
     <h2 class="reveal">Kesztyűben, <b>napsütésben</b> is működik</h2>
     <div class="dec">
-      <div class="reveal d1"><span class="n">44+ px</span><b>Nagy érintési célok</b><span>Gombok, csempék és kapcsolók kesztyűs ujjra méretezve.</span></div>
-      <div class="reveal d2"><span class="n">Alul</span><b>Hüvelykujj-zóna</b><span>Az elsődleges művelet mindig a képernyő alján, egy kézzel elérhető.</span></div>
-      <div class="reveal d3"><span class="n">Kontraszt</span><b>Napfényben olvasható</b><span>Fehér kártyák, sötét szöveg, nagy betű a fontos adatokon.</span></div>
+      <div class="reveal d1"><span class="n">Nagy</span><b>Kesztyűben is eltalálható</b><span>Minden gomb és csempe kényelmesen nagy.</span></div>
+      <div class="reveal d2"><span class="n">Alul</span><b>Hüvelykujj-zóna</b><span>A fő gomb mindig a képernyő alján, egy kézzel elérhető.</span></div>
+      <div class="reveal d3"><span class="n">Olvasható</span><b>Napfényben is jól látszik</b><span>Fehér kártyák, sötét szöveg, nagy betű a fontos adatokon.</span></div>
       <div class="reveal d4"><span class="n">3 jel</span><b>Szín + ikon + szó</b><span>A súlyosság sosem csak színnel kommunikál.</span></div>
-      <div class="reveal d5"><span class="n">1 / 4</span><b>Mindig tudod, hol tartasz</b><span>Haladásjelző, és vissza lehet lépni adatvesztés nélkül.</span></div>
-      <div class="reveal d6"><span class="n">iOS</span><b>Ismerős minták</b><span>Csoportosított listák, alsó lap, natív kapcsolók; a csökkentett mozgás beállítását is tiszteletben tartja.</span></div>
+      <div class="reveal d5"><span class="n">1 / 4</span><b>Mindig tudod, hol tartasz</b><span>Felül látszik, hányadik lépésnél jársz, és bármikor vissza lehet lépni.</span></div>
+      <div class="reveal d6"><span class="n">Ismerős</span><b>Nincs mit tanulni</b><span>Megszokott telefonos elemek, felesleges animációk nélkül.</span></div>
     </div>
   </div>
   <span class="pg">10</span>
@@ -840,18 +840,18 @@ h1 b, h2 b { font-weight: 700; }
 <!-- ============================================================
      12. dia · Bálint · Prototípus és rendszerarchitektúra
      ============================================================ -->
-<section class="slide light" data-who="Bálint · Prototípus és rendszerarchitektúra" data-notes="A prototípus egyetlen önálló HTML-fájl, build nélkül. A két telefon egy közös, élő adatbázison keresztül valós időben szinkronizál, és elérhető a képfelismerés és a diktálás is. Ha nincs kapcsolat, a bejelentés helyben sorba áll, és az app 15 másodpercenként újrapróbálja a küldést.">
+<section class="slide light" data-who="Bálint · Prototípus és rendszerarchitektúra" data-notes="A két telefon egy közös háttéren keresztül kapcsolódik: amit Péter elküld, a kollégánál azonnal megjelenik, és a kolléga válasza is rögtön visszaér. Itt fut a képfelismerés és a diktálás is. Ha a helyszínen nincs térerő, a telefon megőrzi a bejelentést, és amint lesz kapcsolat, magától elküldi.">
   <div class="slide-content">
-    <h2 class="reveal">Egy HTML-fájl, <b>élő közös adatbázis</b></h2>
+    <h2 class="reveal">Minden változás <b>azonnal mindkét telefonon</b></h2>
     <div class="arch reveal d1">
       <div class="node"><span class="sq red"><svg><use href="#i-cam"/></svg></span><b>Szerelő telefonja</b><small>Bejelentés, fotó, élő idővonal</small></div>
       <div class="link"><span>bejelentés →</span><span>← állapot, üzenet</span></div>
-      <div class="node hub"><b>Közös élő adatbázis</b><small>Minden változás azonnal mindkét telefonon</small><div class="mods"><span>Képfelismerés</span><span>Diktálás</span><span>Felhasználók</span></div></div>
+      <div class="node hub"><b>Közös, élő háttér</b><small>Ide fut be minden bejelentés és válasz</small><div class="mods"><span>Képfelismerés</span><span>Diktálás</span><span>Felhasználók</span></div></div>
       <div class="link"><span>← elvállalás, lezárás</span><span>új bejelentés →</span></div>
       <div class="node"><span class="sq tq"><svg><use href="#i-list"/></svg></span><b>Kolléga telefonja</b><small>Élő lista, esetkártya</small></div>
     </div>
     <div class="modes">
-      <div class="reveal d2" style="grid-column:1/-1;max-width:60ch"><svg><use href="#i-queue"/></svg><span><b>Offline sor</b>Kapcsolat nélkül helyben menti a bejelentést, és 15 másodpercenként újrapróbálja a küldést.</span></div>
+      <div class="reveal d2" style="grid-column:1/-1;max-width:60ch"><svg><use href="#i-queue"/></svg><span><b>Térerő nélkül sem vész el</b>Ha nincs kapcsolat, a telefon megőrzi a bejelentést, és amint lesz térerő, magától elküldi.</span></div>
     </div>
   </div>
   <span class="pg">12</span>
@@ -860,7 +860,7 @@ h1 b, h2 b { font-weight: 700; }
 <!-- ============================================================
      13. dia · Bálint · Prototípus és rendszerarchitektúra
      ============================================================ -->
-<section class="slide grad" data-who="Bálint · Prototípus és rendszerarchitektúra" data-notes="Élő demó két telefonnal: az egyik szerelőként, a másik ügyeletes kollégaként fut, közös, élő adatbázissal. Kövessük a hat lépést. A végén a zsűri a QR-kóddal saját telefonon is kipróbálhatja.">
+<section class="slide grad" data-who="Bálint · Prototípus és rendszerarchitektúra" data-notes="Élő demó két telefonnal: az egyik szerelőként, a másik ügyeletes kollégaként fut, élőben összekötve. Kövessük a hat lépést. A végén a zsűri a QR-kóddal saját telefonon is kipróbálhatja.">
   <div class="slide-content">
     <div class="demo">
       <div class="stack">
@@ -908,7 +908,7 @@ h1 b, h2 b { font-weight: 700; }
           <div><s>Szimulált képfelismerés</s><i>→</i><b>Valódi javaslat a fotóból, rövid indoklással</b></div>
           <div><s>Hangjegyzet</s><i>→</i><b>Diktálás szöveggé, utána javítható</b></div>
           <div><s>Kiosztott kolléga</s><i>→</i><b>A kolléga maga vállalja el, érkezési idővel, teendő-listával</b></div>
-          <div><s>Egy telefonon váltott nézet</s><i>→</i><b>Két telefon, közös élő adatbázis</b></div>
+          <div><s>Egy telefonon váltott nézet</s><i>→</i><b>Két telefon, élőben összekötve</b></div>
         </div>
       </div>
     </div>
@@ -926,7 +926,7 @@ h1 b, h2 b { font-weight: 700; }
       <h2 class="reveal d1" style="margin-top:clamp(.3rem,1vh,.7rem)">Hogyan lesz <b>gyorsabb</b> a hibák felismerése és a szerelők közötti kommunikáció?</h2>
       <div class="answer">
         <div class="reveal d2"><h3>Felismerés</h3><p>Fotó → javaslat a hibatípusra. 2–3 igen/nem kérdés → az app számolja a súlyosságot, kritikusnál azonnali teendővel.</p></div>
-        <div class="reveal d3"><h3>Kommunikáció</h3><p>Automatikus címzett, egyértelmű esetkártya (mi, hol, mennyire, mit tegyél), élő státusz és offline küldési sor.</p></div>
+        <div class="reveal d3"><h3>Kommunikáció</h3><p>Automatikus címzett, egyértelmű esetkártya (mi, hol, mennyire, mit tegyél), élő státusz, és térerő nélkül sem vész el semmi.</p></div>
       </div>
       <div class="team reveal d4"><span>Berta Gábor</span><span>Tisza Veronika</span><span>Déri Alexandra</span><span>Nemes Péter Csongor</span><span>Szaller Bálint</span></div>
       <p class="reveal d5" style="font-size:var(--h2);font-weight:300;letter-spacing:-.03em;margin-top:clamp(.5rem,2vh,1.4rem);line-height:1">Köszönjük! <b style="font-weight:700">Kérdések?</b></p>
