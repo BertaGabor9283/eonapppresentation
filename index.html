@@ -461,6 +461,22 @@ h1 b, h2 b { font-weight: 700; }
 .grad .tl { color: var(--ink); }
 @media (max-width: 820px) { .vis, .modes { grid-template-columns: 1fr; } .arch { grid-template-columns: 1fr; } .link { flex-direction: row; justify-content: center; gap: 1em; } }
 
+
+/* === kitöltött ötlet- és tesztkártyák === */
+.idea.alt { background: rgba(255, 255, 255, .12); border: 1px solid rgba(255, 255, 255, .28); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.idea.alt .tag { background: rgba(255, 255, 255, .22); color: #fff; }
+.idea.alt h3 { font-size: clamp(.95rem, 1.6vw, 1.4rem); letter-spacing: -.01em; line-height: 1.15; }
+.idea.alt p { font-size: var(--small); line-height: 1.4; opacity: .95; }
+.idea.alt .why { margin-top: auto; padding-top: .6em; border-top: 1px solid rgba(255, 255, 255, .25); }
+.tstats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); background: #fff; border-radius: clamp(12px, 1.4vw, 18px); box-shadow: 0 .5px 1px rgba(0,0,0,.06); }
+.tstats div { padding: clamp(.5rem, 1.4vh, .8rem) clamp(.6rem, 1.2vw, 1rem); display: flex; flex-direction: column; }
+.tstats div + div { border-left: 1px solid var(--sep); }
+.tstats b { font-size: clamp(1.1rem, 2vw, 1.8rem); font-weight: 700; letter-spacing: -.02em; line-height: 1.05; font-variant-numeric: tabular-nums; }
+.tstats span { font-size: var(--small); color: var(--ink2); }
+.learn { background: #fff; border-radius: clamp(10px, 1.2vw, 16px); padding: clamp(.55rem, 1.4vh, .85rem) clamp(.8rem, 1.4vw, 1.1rem); font-size: var(--small); line-height: 1.4; color: var(--ink2); box-shadow: 0 .5px 1px rgba(0,0,0,.06); border-left: 4px solid var(--red); }
+.learn b { display: block; color: var(--ink); font-size: var(--body); margin-bottom: .15em; }
+@media (max-height: 540px) { .idea.alt p:not(.why) { display: none; } }
+
 /* ===========================================
    RESPONSIVE: keskeny képernyőn egy hasáb, a telefonok eltűnnek
    =========================================== */
@@ -622,12 +638,12 @@ h1 b, h2 b { font-weight: 700; }
 <!-- ============================================================
      5. dia · Nemes Csongor · UX Designer
      ============================================================ -->
-<section class="slide grad" data-who="Nemes Csongor · UX Designer" data-notes="Nem az első ötletet terveztük meg. Röviden mondjátok el a két elvetett irányt és azt, hogy miért nem ezek lettek. A választott irány: a fotó vezeti a bejelentést, mert a kép adja a legtöbb információt gépelés nélkül.">
+<section class="slide grad" data-who="Nemes Csongor · UX Designer" data-notes="Nem az első ötletet terveztük meg. Az első irány a hangüzenet volt: gyors, de zajos helyszínen pontatlan, nincs fotó, és a kolléga nem látja egy pillantással, mennyire sürgős. A második a részletes digitális hibalap: strukturált, de kint, kesztyűben túl lassú. A választott irány a kettő előnyeit ötvözi: a fotó vezeti a bejelentést, a kérdések strukturálnak, gépelni nem kell.">
   <div class="slide-content">
     <h2 class="reveal">Több irányból <b>választottunk</b></h2>
     <div class="ideas">
-      <div class="idea fill reveal d1"><span class="tag">Kitöltendő</span><h3>A irány</h3><p>Az első alternatív ötlet egy mondatban, és hogy miért vetettétek el.</p></div>
-      <div class="idea fill reveal d2"><span class="tag">Kitöltendő</span><h3>B irány</h3><p>A második alternatív ötlet egy mondatban, és hogy miért vetettétek el.</p></div>
+      <div class="idea alt reveal d1"><span class="tag">Elvetett irány</span><h3>Hangüzenetes bejelentés</h3><p>Péter elmondja a hibát, az app átírja és továbbítja.</p><p class="why"><b>Miért nem:</b> zajos helyszínen pontatlan, nincs fotó, és a kolléga nem látja egy pillantással a súlyosságot.</p></div>
+      <div class="idea alt reveal d2"><span class="tag">Elvetett irány</span><h3>Részletes digitális hibalap</h3><p>Teljes űrlap legördülő listákkal: típus, cím, leírás, súlyosság.</p><p class="why"><b>Miért nem:</b> kesztyűben, egy kézzel túl lassú, és a súlyosságot érzésre választanák.</p></div>
       <div class="idea chosen reveal-phone"><span class="tag">Választott irány</span><h3>Fotóval vezetett gyors bejelentés</h3>
         <ul>
           <li>Előbb kép, utána kérdések: a kép adja a legtöbb információt, gépelés nélkül.</li>
@@ -873,16 +889,17 @@ h1 b, h2 b { font-weight: 700; }
 <!-- ============================================================
      14. dia · Bálint · Tesztelés és iteráció
      ============================================================ -->
-<section class="slide light" data-who="Bálint · Tesztelés és iteráció" data-notes="Fiktív usability teszt: egy csapattag Péter szerepében végigment a prototípuson. Bal oldalt a teszt három fő tanulsága, jobb oldalt az, ami a kattintható prototípushoz képest a végső appban megváltozott.">
+<section class="slide light" data-who="Bálint · Tesztelés és iteráció" data-notes="Fiktív usability tesztet futtattunk: két csapattag játszotta Pétert és az ügyeletes kollégát, három forgatókönyvvel – gázszivárgás, hiányzó plomba, beázott mérőhely. Három fő tanulság jött ki, és mindegyikre van válasz a jobb oldalon: indokolt javaslat a fix százalék helyett, diktálás szöveggé a hangjegyzet helyett, és elvállalás érkezési idővel a puszta kiosztás helyett. A második körben a rögzítés már kb. egy perc alatt megvolt.">
   <div class="slide-content">
     <h2 class="reveal">Teszteltük, <b>és változtattunk</b></h2>
     <div class="testlay">
       <div class="stack" style="gap:clamp(.4rem,1.2vh,.7rem)">
-        <p class="lab reveal d1" style="margin:0">Fiktív usability teszt · egy csapattag Péter szerepében</p>
+        <p class="lab reveal d1" style="margin:0">Fiktív usability teszt · két csapattag Péter és a kolléga szerepében</p>
+        <div class="tstats reveal d1"><div><b>3</b><span>forgatókönyv</span></div><div><b>2</b><span>szerep</span></div><div><b>~1 perc</b><span>rögzítés a 2. körben</span></div></div>
         <div class="fills">
-          <div class="fill reveal d2"><b>Kitöltendő:</b> 1. tanulság – hol akadt el vagy bizonytalanodott el „Péter”?</div>
-          <div class="fill reveal d3"><b>Kitöltendő:</b> 2. tanulság – melyik lépés volt felesleges vagy lassú?</div>
-          <div class="fill reveal d4"><b>Kitöltendő:</b> 3. tanulság – mi hiányzott a kollégának?</div>
+          <div class="learn reveal d2"><b>Nem bízott a felismerésben</b>A fix százalék indoklás nélkül gyanús volt, „Péter” inkább kézzel választott.</div>
+          <div class="learn reveal d3"><b>A hangjegyzet lassította a kollégát</b>Végig kellett hallgatnia, és Péter sem tudta ellenőrizni, mit rögzített.</div>
+          <div class="learn reveal d4"><b>Egy név nem elég</b>A kiosztott kolléga nevéből Péter nem tudta, várjon-e, és mikorra ér oda segítség.</div>
         </div>
       </div>
       <div class="stack" style="gap:clamp(.4rem,1.2vh,.7rem)">
